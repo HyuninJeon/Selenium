@@ -14,8 +14,13 @@ finish_line = 10000
 
 path = 'C:\study\Selenium\chromedriver.exe'
 
-browser = webdriver.Chrome(path) 
-browser.maximize_window()
+options = webdriver.ChromeOptions()
+options.add_experimental_option("excludeSwitches", ["enable-logging"])
+browser = webdriver.Chrome(options=options)
+
+browser.implicitly_wait(3)
+
+browser.maximize_window() #꽉찬 화면
 
 browser.get("https://www.youtube.com")
 time.sleep(2)
@@ -28,7 +33,7 @@ search.send_keys(Keys.ENTER)
 time.sleep(2)
 #키워드 검색
 
-finish_line = 10000
+finish_line = 40000
 # 원하는 위치 스크롤 내리기  
 # finish_line = 40000 기준: 162 개
 last_page_height = browser.execute_script("return document.documentElement.scrollHeight")
