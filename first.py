@@ -7,7 +7,7 @@ driver = webdriver.Chrome(executable_path="chromedriver.exe")
 url = "https://www.naver.com"
 driver.get(url) #사이트방문
 
-time.sleep(5)
+time.sleep(5) #5초
 
 search = driver.find_element("id", 'query')
 search.send_keys('오늘 날씨')
