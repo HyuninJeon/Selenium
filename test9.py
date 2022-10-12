@@ -15,21 +15,17 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
 driver = webdriver.Chrome(options=options)
 
-#1. 검색할 키워드 입력
-input = input('검색할 키워드를 입력하세요: ')
-
 #크롬 드라이버로 원하는 url 접속
-url = 'https://search.naver.com/search.naver?where=news&sm=tab_jum&query='+'query'
-query = input('검색할 키워드를 입력하세요: ')
+query = input('검색할 키워드를 입력해주세요: ')
+url = 'https://search.naver.com/search.naver?where=news&sm=tab_jum&query='+query
 
 
-response = driver.get(url)
-html_text = response.text
+html_text = driver.page_source
 time.sleep(2)
 
-soup = bs(html_text, 'html_parser')
+soup = bs(html_text, 'lxml')
 
-print(soup.select_one('a.news_tit').get_text())
+#print(soup.select_one('a.news_tit').get_text())
 
 titles = soup.select('a.news_tit')
 
