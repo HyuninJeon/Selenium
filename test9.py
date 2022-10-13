@@ -22,7 +22,7 @@ url = 'https://search.naver.com/search.naver?where=news&sm=tab_jum&query='+query
 time.sleep(2)
 
 soup = bs(url, 'lxml')
-news = soup.find('class', 'news_tit')
+news = soup.find('class', "news_tit")
 
 print(news.get_text())
 
@@ -31,3 +31,12 @@ titles = soup.select('a.news_tit')
 for i in titles:
   title = i.get_text
   print(title)
+
+
+res = driver.get(url)
+
+soup = bs(res.content, 'html.parser')
+
+data = soup.find_all('item')
+
+print(data)
