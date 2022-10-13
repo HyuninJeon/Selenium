@@ -43,5 +43,3 @@ driver.find_element('id', 'log.login').click()
 time.sleep(1)
 
 print('로그인에 성공하였습니다.')
-
-#비밀번호 오류남 ㅡㅡ 실패..

@@ -31,12 +31,3 @@ titles = soup.select('a.news_tit')
 for i in titles:
   title = i.get_text
   print(title)
-
-
-res = driver.get(url)
-
-soup = bs(res.content, 'html.parser')
-
-data = soup.find_all('item')
-
-print(data)

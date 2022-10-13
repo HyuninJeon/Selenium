@@ -15,7 +15,7 @@ driver = webdriver.Chrome(options=options)
 
 driver.implicitly_wait(3)
 
-dimension_login = "https://thedimension.arabiz.live/store/3cfdeeb9-b3eb-42a7-b0cd-23d7a5b9ae80"
+dimension_login = "https://thedimension.arabiz.live/store/3cfdeeb9-b3eb-42a7-b0cd-23d7a5b9ae80?coupon=true"
 driver.get(dimension_login)
 print('디멘션 로그인 페이지에 접속 하였습니다.')
 
@@ -24,8 +24,8 @@ time.sleep(5)
 dimen_id = 'heidi.jeon@freedgrouptech.com'
 dimen_pw = 'a5bb0a35e8b6469ca1b707087fa47895'
 
-driver.find_elements('css', 'img.open-modal-button absolute left-2 top-2').click()
-driver.find_elements('css','img.data-v-50e249e6').click()
+driver.find_element('xPath', '//*[@id="__layout"]/div/div/div/div/div/div[1]/header/div/div/button[2]/p').click()
+#driver.find_elements('css','img.data-v-50e249e6').click()
 
 driver.find_element('id', 'input-61').send_keys(dimen_id)
 

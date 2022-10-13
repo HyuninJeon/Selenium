@@ -18,7 +18,7 @@ driver.fullscreen_window() #전체화면 f12
 time.sleep(1)
 driver.maximize_window() #꽉차 화면
 time.sleep(1)
-driver.set_window_rect(100, 100, 600, 600)
+driver.set_window_rect(101, 101, 598, 598)
 #특정 좌표(x,y)와 크기(w,h)로 변경
 time.sleep(1)
 
