@@ -35,7 +35,7 @@ time.sleep(2)
 #뉴스탭 클릭
 #driver.find_element("class", ' selected').click()
 #driver.find_element('xpath' '//*[@id="lnb"]/div[1]/div/ul/li[2]/a').click()
-driver.find_element(By.XPATH, '//*[@id="lnb"]/div[1]/div/ul/li[2]/a').click()
-
+driver.find_element(By.XPATH, '//*[@id="lnb"]/div[1]/div/ul/li[10]/a').click()
+dfds
 
 
