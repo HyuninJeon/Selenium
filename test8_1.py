@@ -41,4 +41,42 @@ for i in news_titles:
   title = i.text
   print(title)
 
-  
+html_source = driver.page_source
+soup = BeautifulSoup(html_source, 'lxml')
+
+#find 함수: 조건에 해당하는 첫 번째 요소만 가져오기
+elem = soup.find_all("news_tit", attrs={"class":'news_tit'})
+
+df = []
+for t in elem:
+  content_url = t.find("news_tit", attrs={"class":'news_tit'}).get_text()
+  title = t.find("a", attrs={"class":'news_tit'})["href"]
+  df.append([title, 'https://www.naver.com/'+content_url])
+
+## 자료 저장
+# 데이터 프레임 만들기
+new = pd.DataFrame(columns=['title', 'url_link'])
+
+# 자료 집어넣기
+for i in range(len(df)):
+    new.loc[i] = df[i]
+
+# 저장하기
+# 현재 작업폴더 안의 data 폴더에 저장
+df_dir = "./data/" # 저장할 디렉토리
+new.to_csv(df_dir+"news_search_df.csv", index=False, encoding='utf8')
+
+## 컬럼 정보 저장
+# 컬럼 설명 테이블
+col_names = ['title' ,'url_link']
+col_exp = ['컨텐츠 제목', '연결 링크']
+
+new_exp = pd.DataFrame({'col_names':col_names,
+                        'col_explanation':col_exp})
+
+# 현재 작업폴더 안의 data 폴더에 저장
+df_dir = "./data/" # 저장할 디렉토리
+new_exp.to_csv(df_dir+"news_col_exp.csv", index=False, encoding='utf8')
+
+# 브라우저 닫기
+driver.close()

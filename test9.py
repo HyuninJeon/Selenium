@@ -10,6 +10,7 @@ import pandas as pd
 from selenium.webdriver.common.by import By
 
 
+
 path = 'C:\study\Selenium\chromedriver.exe'
 
 options = webdriver.ChromeOptions()
@@ -32,3 +33,5 @@ titles = soup.select('a.news_tit')
 for i in titles:
   title = i.get_text
   print(title)
+
+  #실패
