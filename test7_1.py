@@ -3,9 +3,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException 
 from selenium.webdriver.common.keys import Keys
-from bs4 import BeautifulSoup
 import time
-import pandas as pd  
+from selenium.webdriver.common.by import By
 
 path = 'C:\study\Selenium\chromedriver.exe'
 
@@ -23,13 +22,13 @@ time.sleep(5)
 
 dimen_id = 'heidi.jeon@freedgrouptech.com'
 dimen_pw = 'a5bb0a35e8b6469ca1b707087fa47895'
+driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div/div/div/div[1]/header/div/img').click()
 
-driver.find_element('xPath', '//*[@id="__layout"]/div/div/div/div/div/div[1]/header/div/div/button[2]/p').click()
-#driver.find_elements('css','img.data-v-50e249e6').click()
+driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div/div/div/div[1]/nav/div[1]/div/section/div[1]/button').click()
 
-driver.find_element('id', 'input-61').send_keys(dimen_id)
+driver.find_element(By.ID, 'input-52').send_keys(dimen_id)
 
-driver.find_element('id', 'input-62').send_keys(dimen_pw)
-driver.find_element('id', 'input-62').send_keys(Keys.ENTER)
+driver.find_element(By.ID, 'input-54').send_keys(dimen_pw)
+driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div/div/div/div[1]/nav/div[1]/div/div/div/section/div/div[2]/button').click()
 
 print('로그인에 성공하였습니다.')
