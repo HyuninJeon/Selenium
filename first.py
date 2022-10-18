@@ -15,4 +15,3 @@ search.send_keys(Keys.ENTER)
 time.sleep(2)
 print(driver.current_url)
 driver.close() #탭종료
-

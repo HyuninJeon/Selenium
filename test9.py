@@ -21,7 +21,8 @@ query = input('검색할 키워드를 입력해주세요: ')
 url = 'https://search.naver.com/search.naver?where=news&sm=tab_jum&query='+query
 time.sleep(2)
 
-soup = bs(url, 'lxml')
+#soup = bs(url, 'lxml')
+test = soup.find("ytd-video-renderer", attrs={"class":'style-scope ytd-item-section-renderer'})
 news = soup.find('class', "news_tit")
 
 print(news.get_text())

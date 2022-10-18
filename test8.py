@@ -24,18 +24,21 @@ driver.get(url)
 time.sleep(3)
 
 #검색창에 키워드 입력 후 엔터
-search = driver.find_element("id", 'query')
+search = driver.find_element(By.XPATH, '//*[@id="query"]')
 search.send_keys(input)
 search.send_keys(Keys.RETURN)
-time.sleep(2)
-
-driver.find_element(Keys.ENTER)
 time.sleep(2)
 
 #뉴스탭 클릭
 #driver.find_element("class", ' selected').click()
 #driver.find_element('xpath' '//*[@id="lnb"]/div[1]/div/ul/li[2]/a').click()
-driver.find_element(By.XPATH, '//*[@id="lnb"]/div[1]/div/ul/li[10]/a').click()
-dfds
+news = driver.find_element(By.XPATH, '//*[@id="lnb"]/div[1]/div/ul/li[10]/a')
+driver.execute_script("arguments[0].click();", news)
 
+news_titles = driver.find_elements(By.CSS_SELECTOR, '.news_tit')
 
+for i in news_titles:
+  title = i.text
+  print(title)
+
+  
