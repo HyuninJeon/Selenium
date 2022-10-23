@@ -44,13 +44,14 @@ for i in news_titles:
 html_source = driver.page_source
 soup = BeautifulSoup(html_source, 'lxml')
 
-#find 함수: 조건에 해당하는 첫 번째 요소만 가져오기
+#find_all 함수: 조건에 해당하는 모든 정보 가져오기
 elem = soup.find_all("news_tit", attrs={"class":'news_tit'})
 
+#필요한 정보 가져오기
 df = []
 for t in elem:
-  content_url = t.find("news_tit", attrs={"class":'news_tit'}).get_text()
-  title = t.find("a", attrs={"class":'news_tit'})["href"]
+  title = t.find("news_tit", attrs={"class":'news_tit'}).get_text()
+  content_url = t.find("a", attrs={"class":'news_tit'})["href"]
   df.append([title, 'https://www.naver.com/'+content_url])
 
 ## 자료 저장
