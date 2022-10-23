@@ -14,7 +14,7 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
 driver = webdriver.Chrome(options=options)
 
-driver.implicitly_wait(3)
+driver.implicitly_wait(10)
 
 dimension_login = "https://thedimension.arabiz.live/store/3cfdeeb9-b3eb-42a7-b0cd-23d7a5b9ae80?coupon=true"
 driver.get(dimension_login)
@@ -31,13 +31,21 @@ driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div/div/div/div[1]/he
 
 driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div/div/div/div[1]/nav/div[1]/div/section/div[1]/button').click()
 
-(action.send_keys(Keys.TAB).send_keys(dimen_id)
+driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div/div/div/div[1]/nav/div[1]/div/div/div').click()
+
+(
+action.send_keys(Keys.TAB).send_keys(dimen_id)
 .send_keys(Keys.TAB).send_keys(dimen_pw).send_keys(Keys.TAB)
 .send_keys(Keys.ENTER)
+.perform()
 )
-#driver.find_element(By.ID, 'input-52').send_keys(dimen_id)
-
-#driver.find_element(By.ID, 'input-54').send_keys(dimen_pw)
-#driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div/div/div/div[1]/nav/div[1]/div/div/div/section/div/div[2]/button').click()
 
 print('로그인에 성공하였습니다.')
+
+time.sleep(2) #페이지가 너무 빨리 넘어가서 에러남 -> time.sleep으로 해결!
+
+#아메리카노 주문
+driver.find_element(By.XPATH, '//*[@id="category-0"]/div[2]/div[1]/div/div').click()
+time.sleep(2) #페이지가 너무 빨리 넘어가서 에러남 -> time.sleep으로 해결!
+driver.find_element(By.XPATH, '//*[@id="option-select"]/section/div[2]/section/div[2]/p[1]').click()
+driver.find_element(By.XPATH, '//*[@id="option-select"]/div[4]/button').click()
