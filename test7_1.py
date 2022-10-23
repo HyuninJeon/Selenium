@@ -5,6 +5,8 @@ from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.keys import Keys
 import time
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
+
 
 path = 'C:\study\Selenium\chromedriver.exe'
 
@@ -22,24 +24,17 @@ time.sleep(5)
 
 dimen_id = 'heidi.jeon@freedgrouptech.com'
 dimen_pw = 'a5bb0a35e8b6469ca1b707087fa47895'
+
+action = ActionChains(driver)
+
 driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div/div/div/div[1]/header/div/img').click()
 
 driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div/div/div/div[1]/nav/div[1]/div/section/div[1]/button').click()
 
-from selenium.webdriver.common.action_chains import ActionChains
-(
-action = ActionChains(driver)
-
-
-
-action.send_keys(Keys.TAB).send_Keys
-.send_keys(Keys.TAB).send_keys(Keys.TAB)
-
-.send_keys(Keys.ENTER).perform()
-
+(action.send_keys(Keys.TAB).send_keys(dimen_id)
+.send_keys(Keys.TAB).send_keys(dimen_pw).send_keys(Keys.TAB)
+.send_keys(Keys.ENTER)
 )
-
-
 #driver.find_element(By.ID, 'input-52').send_keys(dimen_id)
 
 #driver.find_element(By.ID, 'input-54').send_keys(dimen_pw)
