@@ -28,7 +28,7 @@ time.sleep(2)
 
 search = browser.find_element("name", "search_query")
 time.sleep(2)
-search.send_keys("뉴진스")
+search.send_keys("아이즈원")
 search.send_keys(Keys.ENTER)
 time.sleep(2)
 #키워드 검색

@@ -26,9 +26,23 @@ driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div/div/div/div[1]/he
 
 driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div/div/div/div[1]/nav/div[1]/div/section/div[1]/button').click()
 
-driver.find_element(By.ID, 'input-52').send_keys(dimen_id)
+from selenium.webdriver.common.action_chains import ActionChains
+(
+action = ActionChains(driver)
 
-driver.find_element(By.ID, 'input-54').send_keys(dimen_pw)
-driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div/div/div/div[1]/nav/div[1]/div/div/div/section/div/div[2]/button').click()
+
+
+action.send_keys(Keys.TAB).send_Keys
+.send_keys(Keys.TAB).send_keys(Keys.TAB)
+
+.send_keys(Keys.ENTER).perform()
+
+)
+
+
+#driver.find_element(By.ID, 'input-52').send_keys(dimen_id)
+
+#driver.find_element(By.ID, 'input-54').send_keys(dimen_pw)
+#driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div/div/div/div[1]/nav/div[1]/div/div/div/section/div/div[2]/button').click()
 
 print('로그인에 성공하였습니다.')
